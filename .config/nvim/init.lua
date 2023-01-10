@@ -1,3 +1,7 @@
+require("plugins")
+require("config.nvimtree")
+require("config.decay")
+
 vim.cmd([[
 set number
 set mouse=v
@@ -8,7 +12,3 @@ set clipboard=unnamedplus
 
 colorscheme decay
 ]])
-
-require("plugins")
-
-require("config.nvimtree")

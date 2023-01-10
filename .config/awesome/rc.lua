@@ -502,6 +502,29 @@ end)
 -- }}}
 
 -- {{{ Titlebars
+local function getclosebutton(c)
+	return wibox.widget {
+		markup = "<span foreground='#FF5733'></span>",
+		font = beautiful.font .. " 20",
+		widget = wibox.widget.textbox,
+		buttons = gears.table.join(
+			awful.button({}, 1, function() c:kill() end)
+		)
+	}
+end
+
+local function getmodebutton(c)
+	return wibox.widget {
+		markup = "<span foreground='#FFBE33'></span>",
+		font = beautiful.font .. " 20",
+		widget = wibox.widget.textbox,
+		buttons = gears.table.join(
+			awful.button({}, 1, function()
+				awful.client.floating.toggle(d)
+			end)
+		)
+	}
+end
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
@@ -514,27 +537,34 @@ client.connect_signal("request::titlebars", function(c)
         end),
     }
 
-    awful.titlebar(c).widget = {
+    awful.titlebar(c, { size = 32 }).widget = {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
+			{
+				awful.titlebar.widget.iconwidget(c),
+				buttons = buttons,
+				layout = wibox.layout.fixed.horizontal
+			},
+			margins = 6,
+			widget = wibox.container.margin
+		},
         { -- Middle
             { -- Title
                 halign = "center",
+				font = beautiful.font .. " 10",
                 widget = awful.titlebar.widget.titlewidget(c)
             },
             buttons = buttons,
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal()
+			{
+				getmodebutton(c),
+				getclosebutton(c),
+				spacing = 6,
+				layout = wibox.layout.fixed.horizontal()
+			},
+			margins = 6,
+			widget = wibox.container.margin,
         },
         layout = wibox.layout.align.horizontal
     }
@@ -564,5 +594,7 @@ end)
 client.connect_signal("mouse::enter", function(c)
     c:activate { context = "mouse_enter", raise = false }
 end)
+
+awful.spawn("picom")
 
 require("ui")

@@ -13,7 +13,7 @@ theme.font          = "CaskaydiaCove Nerd Font 8"
 
 theme.bg_normal     = "#0d0e11"
 theme.bg_alt = "1f2026"
-theme.bg_focus      = "#1f2026"
+theme.bg_focus      = "#0d0e11"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -28,6 +28,9 @@ theme.border_width  = dpi(0)
 theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
+
+theme.tasklist_bg_focus = "#1f2026" -- #1f2026
+theme.tasklist_bg_minimize = theme.bg_normal
 
 theme.taglist_bg_focus = "#4fa2cf"
 theme.taglist_bg_empty = "#1f2026"

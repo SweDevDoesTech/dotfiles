@@ -5,14 +5,26 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
 local gettaglist = require("ui.bar.modules.tags")
+local gettasklist = require("ui.bar.modules.tasklist")
+local powerbutton = require("ui.bar.modules.powerbutton")
 
 screen.connect_signal("request::desktop_decoration", function(s)
 	local content = wibox.widget {
 		{
 			{
-				widget = wibox.container.background,
+				gettasklist(s),
+				valign = "center",
+				halign = "center",
+				layout = wibox.container.place
+			},
+			{
+				powerbutton,
+				valign = "right",
+				halign = "right",
+				layout = wibox.container.place,
+			},
+			{
 				gettaglist(s),
-				bg = "#ffffff",
 				valign = "left",
 				halign = "left",
 				layout = wibox.container.place,
@@ -20,7 +32,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			layout = wibox.layout.stack
 		},
 		bg = beautiful.bg_normal,
-		widget = wibox.container.background
+		left = 10,
+		right = 10,
+		widget = wibox.container.margin
 	}
 
 	local bar = awful.popup {
@@ -28,7 +42,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		screen = s,
 		minimum_width = s.geometry.width - dpi(12),
 		minimum_height = 35,
-		shape = gears.shape.rounded_rect,
+		shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 8) end,
 		visible = true,
 		placement = function(d)
 			return awful.placement.top(d, {

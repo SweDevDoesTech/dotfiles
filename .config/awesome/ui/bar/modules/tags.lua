@@ -32,8 +32,8 @@ function gettaglist(s)
 				widget = wibox.widget.textbox
 			},
 			id = "background_role",
-			forced_width = 16,
-			forced_height = 16,
+			forced_width = 14,
+			forced_height = 14,
 			widget = wibox.container.background,
 		}
 	}
