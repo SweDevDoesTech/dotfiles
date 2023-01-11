@@ -1,4 +1,5 @@
 ## My current dotfiles  
+![Image](./assets/)
 **To install run these commands:**  
 
     cd .config  
