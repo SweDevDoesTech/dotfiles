@@ -1,0 +1,36 @@
+format = '''
+[╭────>](bold blue) \($username[@](bold purple)$hostname\) [─](bold blue) [$directory](bold blue)
+[│](bold blue) $git_branch$git_status$package$nodejs
+[╰─>](bold blue) 
+'''
+scan_timeout = 10
+
+add_newline = false
+
+[username]
+show_always = true
+style_user = "bold purple"
+format = '[$user]($style)'
+
+[hostname]
+format = '[$hostname]($style)'
+style = "bold purple"
+ssh_only = false
+disabled = false
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%T'
+utc_time_offset = '-1'
+
+[git_branch]
+symbol = " "
+
+[package]
+symbol = " "
+
+[nodejs]
+format = "via [ Node.js $version](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
