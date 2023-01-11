@@ -1,5 +1,5 @@
 ## My current dotfiles  
-![Image](./assets/)
+![Image](./assets/awesome rice edited.png)
 **To install run these commands:**  
 
     cd .config  
