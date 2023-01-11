@@ -15,4 +15,4 @@
  - **System Fetching:** neofetch
  - **Editor:** neovim
  - **Compositor:** picom
-
+ - **Application Launcher:** rofi (Required to launch programs!)
