@@ -33,7 +33,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		},
 		bg = beautiful.bg_normal,
 		left = 10,
-		right = 10,
+		right = 0,
 		widget = wibox.container.margin
 	}
 

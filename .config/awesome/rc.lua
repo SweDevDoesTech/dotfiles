@@ -38,8 +38,8 @@ end)
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/dark.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "nano"
+terminal = "alacritty"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -94,6 +94,7 @@ end)
 -- }}}
 
 -- {{{ Wallpaper
+--[[
 screen.connect_signal("request::wallpaper", function(s)
     awful.wallpaper {
         screen = s,
@@ -111,6 +112,7 @@ screen.connect_signal("request::wallpaper", function(s)
         }
     }
 end)
+]]
 -- }}}
 
 -- {{{ Wibar
@@ -596,5 +598,6 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 awful.spawn("picom")
+awful.spawn.with_shell("nitrogen --restore")
 
 require("ui")

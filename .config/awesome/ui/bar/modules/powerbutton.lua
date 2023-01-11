@@ -3,7 +3,7 @@ local awful = require 'awful'
 local beautiful = require 'beautiful'
 
 local powerbutton = wibox.widget {
-    markup = '⏻',
+    markup = ' ',
     valign = 'center',
     font = beautiful.font .. ' 18',
     widget = wibox.widget.textbox,
