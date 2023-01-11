@@ -1,4 +1,4 @@
-## My current dotfiles  
+## My current dotfiles (WARNING The config is not finished)
 ![Image](./assets/screenshot.png)
 **To install run these commands:**  
 
